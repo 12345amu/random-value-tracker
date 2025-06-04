@@ -6,6 +6,17 @@ const PORT = 5000;
 
 app.use(express.static(path.join(__dirname, 'public'))); 
 
+let currentValue = 0;                         
+let previousValue = 0;                        
+
+setInterval(() => {                           
+  previousValue = currentValue;               
+  currentValue = Math.floor(Math.random() * 201) - 100;  
+  const timestamp = new Date();              
+  console.log(`[${timestamp.toISOString()}] Value: ${currentValue}`); 
+}, 1000);
+
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`); 
 });
