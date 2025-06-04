@@ -16,6 +16,14 @@ setInterval(() => {
   console.log(`[${timestamp.toISOString()}] Value: ${currentValue}`); 
 }, 1000);
 
+app.get('/api/current-value', (req, res) => {           
+  res.json({                                            
+    value: currentValue,                                
+    trend: currentValue > previousValue ? 'up' :        
+           currentValue < previousValue ? 'down' : 'same' 
+  });                                                   
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`); 
