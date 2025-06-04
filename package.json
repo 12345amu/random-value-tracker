@@ -1,5 +1,9 @@
 {
   "name": "random-value-tracker",
   "version": "1.0.0",
-  "description": "App to track random values with MongoDB and color-coded UI"
+  "description": "App to track random values with MongoDB and color-coded UI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
 }
