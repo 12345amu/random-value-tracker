@@ -30,7 +30,12 @@ async function fetchData() {
     const res = await fetch('/api/current-value');
     const data = await res.json();
     updateBox(data);
-11111111````````````````
+    } catch (err) {
+    console.error('Error fetching value:', err);
+  }
+}
+
+
 
 
  
