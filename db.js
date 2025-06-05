@@ -16,3 +16,12 @@ const valueSchema = new mongoose.Schema({
 });
 
 const Value = mongoose.model('Value', valueSchema);
+
+async function insertValue(data) {
+  try {
+    const val = new Value(data);
+    await val.save();
+  } catch (err) {
+    console.error('Insert Value Error:', err);
+  }
+}
