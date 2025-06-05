@@ -14,3 +14,5 @@ const valueSchema = new mongoose.Schema({
   value: Number,
   timestamp: Date,
 });
+
+const Value = mongoose.model('Value', valueSchema);
