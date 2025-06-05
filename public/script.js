@@ -20,11 +20,17 @@ function updateBox(data) {
   valueBox.style.backgroundColor = getShade(data.value);
   trendEl.textContent = data.trend;
   currentValueEl.textContent = data.value;
-  
+
   updateCount++;
   updateCountEl.textContent = updateCount;
 }
 
+async function fetchData() {
+  try {
+    const res = await fetch('/api/current-value');
+    const data = await res.json();
+    updateBox(data);
+11111111````````````````
 
 
  
