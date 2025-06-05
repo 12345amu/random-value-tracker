@@ -34,6 +34,8 @@ async function fetchData() {
     console.error('Error fetching value:', err);
   }
 }
+setInterval(fetchData, 1000);
+
 
 
 
