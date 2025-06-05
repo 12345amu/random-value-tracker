@@ -10,3 +10,4 @@ function getShade(value) {
   }
 }
 
+function updateBox(data) {
