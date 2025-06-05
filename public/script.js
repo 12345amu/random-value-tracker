@@ -17,5 +17,8 @@ function updateBox(data) {
   const updateCountEl = document.getElementById('updateCount');
   valueBox.textContent = data.value;
   valueBox.style.backgroundColor = getShade(data.value);
+  trendEl.textContent = data.trend;
+  currentValueEl.textContent = data.value;
+
 
  
