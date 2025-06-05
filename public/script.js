@@ -11,3 +11,8 @@ function getShade(value) {
 }
 
 function updateBox(data) {
+    const valueBox = document.getElementById('valueBox');
+  const trendEl = document.getElementById('trend');
+  const currentValueEl = document.getElementById('currentValue');
+  const updateCountEl = document.getElementById('updateCount');
+
