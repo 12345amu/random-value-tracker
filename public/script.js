@@ -25,13 +25,13 @@ function updateBox(data) {
   updateCountEl.textContent = updateCount;
 }
 
-async function fetchData() {
-  try {
-    const res = await fetch('/api/current-value');
-    const data = await res.json();
-    updateBox(data);
-    } catch (err) {
-    console.error('Error fetching value:', err);
-  }
-}
-setInterval(fetchData, 1000);
+const evtSource = new EventSource('/api/current-value');
+
+evtSource.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  updateBox(data);
+};
+
+evtSource.onerror = (err) => {
+  console.error('SSE connection error:', err);
+};
