@@ -11,6 +11,31 @@ let previousValue = 0;
 let positiveStreak = 0;
 let streakStartTime = null;
 
+const clients = [];
+
+app.get('/api/current-value', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  res.write(`data: ${JSON.stringify({
+    value: currentValue,
+    trend:
+      currentValue > previousValue
+        ? 'up'
+        : currentValue < previousValue
+        ? 'down'
+        : 'same',
+  })}\n\n`);
+
+  clients.push(res);
+
+  req.on('close', () => {
+    clients.splice(clients.indexOf(res), 1);
+  });
+});
+
 
 
 app.listen(PORT, () => {
