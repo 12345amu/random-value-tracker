@@ -42,6 +42,42 @@ function broadcast(data) {
   });
 }
 
+setInterval(() => {
+  previousValue = currentValue;
+  currentValue = Math.floor(Math.random() * 201) - 100;
+  const timestamp = new Date();
+
+  insertValue({ value: currentValue, timestamp });
+
+  if (currentValue > 0) {
+    if (positiveStreak === 0) {
+      streakStartTime = timestamp;
+    }
+    positiveStreak++;
+  } else if (positiveStreak > 0) {
+    const streakData = {
+      startTime: streakStartTime,
+      endTime: timestamp,
+      durationSeconds: Math.floor((timestamp - streakStartTime) / 1000),
+      count: positiveStreak,
+    };
+    insertStreak(streakData);
+    positiveStreak = 0;
+    streakStartTime = null;
+  }
+
+  console.log(`[${timestamp.toISOString()}] Value: ${currentValue}`);
+
+  broadcast({
+    value: currentValue,
+    trend:
+      currentValue > previousValue
+        ? 'up'
+        : currentValue < previousValue
+        ? 'down'
+        : 'same',
+  });
+}, 1000);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`); 
