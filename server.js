@@ -36,6 +36,11 @@ app.get('/api/current-value', (req, res) => {
   });
 });
 
+function broadcast(data) {
+  clients.forEach((client) => {
+    client.write(`data: ${JSON.stringify(data)}\n\n`);
+  });
+}
 
 
 app.listen(PORT, () => {
