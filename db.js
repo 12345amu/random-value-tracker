@@ -24,7 +24,7 @@ const streakSchema = new mongoose.Schema({
 
 
 const Value = mongoose.model('Value', valueSchema);
-
+const Streak = mongoose.model('Streak', streakSchema);
 
 async function insertValue(data) {
   try {
