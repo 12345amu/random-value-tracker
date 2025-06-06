@@ -44,4 +44,4 @@ async function insertStreak(data) {
   }
 }
 
-module.exports = { insertValue };
+module.exports = { insertValue, insertStreak };
