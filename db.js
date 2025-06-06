@@ -35,4 +35,13 @@ async function insertValue(data) {
   }
 }
 
+async function insertStreak(data) {
+  try {
+    const streak = new Streak(data);
+    await streak.save();
+  } catch (err) {
+    console.error('Insert Streak Error:', err);
+  }
+}
+
 module.exports = { insertValue };
