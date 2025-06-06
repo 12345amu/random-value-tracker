@@ -17,6 +17,7 @@ const valueSchema = new mongoose.Schema({
 
 const Value = mongoose.model('Value', valueSchema);
 
+
 async function insertValue(data) {
   try {
     const val = new Value(data);
@@ -25,3 +26,5 @@ async function insertValue(data) {
     console.error('Insert Value Error:', err);
   }
 }
+
+module.exports = { insertValue};

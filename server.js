@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { insertValue, insertStreak } = require('./db');
+const { insertValue , value } = require('./db');
 const app = express();
 const PORT = 5000;
 
