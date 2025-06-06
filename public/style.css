@@ -4,6 +4,11 @@ body {
   padding-top: 50px;
   background-color: #f0f0f0;
 }
+
+h1 {
+  margin-bottom: 20px;
+}
+
 #valueBox {                               
   display: inline-block;
   width: 200px;
