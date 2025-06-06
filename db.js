@@ -15,6 +15,14 @@ const valueSchema = new mongoose.Schema({
   timestamp: Date,
 });
 
+const streakSchema = new mongoose.Schema({
+  startTime: Date,
+  endTime: Date,
+  durationSeconds: Number,
+  count: Number,
+});
+
+
 const Value = mongoose.model('Value', valueSchema);
 
 
@@ -27,4 +35,4 @@ async function insertValue(data) {
   }
 }
 
-module.exports = { insertValue};
+module.exports = { insertValue };
